@@ -8,6 +8,8 @@ import CountriesContainer from './components/CountriesContainer';
 function App() {
   const [countries, setCountries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isdark,SetIsDark]=useState(false);
+  
 
   // Fetch countries data
   const fetchCountriesData = () => {
