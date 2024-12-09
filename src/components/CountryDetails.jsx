@@ -47,34 +47,40 @@ const CountryDetails = () => {
             />
 
             {/* Details */}
-            <div className="lg:w-1/2">
+            <div className="w-[700px] ">
               <h2 className="text-2xl font-bold mb-4"></h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 <p>
-                  <strong>Native Name:</strong>
+                  <strong>Native Name:</strong> {country.nativeName ? Object.values(country.nativeName).join(',') : "N/A"}
 
                 </p>
                 <p>
-                  <strong>Top Level Domain:</strong>
+                  <strong>Top Level Domain:</strong> {country.tld ? Object.values(country.tld).join(',') : 'N/A'}
                 </p>
                 <p>
-                  <strong>Population:</strong> {country.population}
+                  <strong>Population:</strong> {country.population?.toLocaleString() || "N/A"}
                 </p>
-                <p>
-                  <strong>Currencies:</strong>
+                <p className="flex gap-1">
+                  <strong>Curreencies </strong> :<p className="flex-shrink-0">
+                    {country.currencies
+                      ? Object.values(country.currencies)
+                        .map(currency => `${currency.name} (${currency.symbol})`)
+                        .join(', ')
+                      : "N/A"}
+                  </p>
                 </p>
                 <p>
                   <strong>Region:</strong> {country.region}
                 </p>
-                <p>
-                  <strong>Languages:</strong>
+                <p className="flex gap-1">
+                  <strong>Languages:</strong>  <p className="flex-shrink-0">{country.languages ? Object.values(country.languages).join(' , ') : "N/A"} </p>
                 </p>
                 <p>
-                  <strong>Sub Region:</strong> {country.subregion}
+                  <strong>Sub Region:</strong> <p className="flex-shrink-0">{country.subregion}</p>
                 </p>
                 <p>
                   <strong>Capital:</strong>{country.capital.map((capi, i) => {
-                    return (  <span key={i}>{capi}</span>)
+                    return (<span key={i}>{capi}</span>)
                   })}
                 </p>
               </div>
